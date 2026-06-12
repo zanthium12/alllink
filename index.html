@@ -1,440 +1,704 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Cosmos | Your Link Universe</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0a0e27;
-    --bg2:#0d1230;
-    --card:rgba(255,255,255,0.04);
-    --card-border:rgba(255,255,255,0.08);
-    --cyan:#5eead4;
-    --violet:#a78bfa;
-    --pink:#fb7185;
-    --amber:#fbbf24;
-    --text:#e7e9f5;
-    --muted:#8b92b8;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    min-height:100vh;
-    overflow-x:hidden;
-    position:relative;
-  }
-  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Cosmos | Your Link Universe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e27;
+      --bg2: #0d1230;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --cyan: #5eead4;
+      --violet: #a78bfa;
+      --pink: #fb7185;
+      --amber: #fbbf24;
+      --text: #e7e9f5;
+      --muted: #8b92b8;
+    }
 
-  /* Aurora background */
-  .aurora{
-    position:fixed; inset:0; z-index:-1; overflow:hidden;
-    background:radial-gradient(ellipse at top, #131a3d 0%, var(--bg) 60%);
-  }
-  .aurora span{
-    position:absolute; border-radius:50%; filter:blur(120px); opacity:.35;
-    animation:drift 22s ease-in-out infinite alternate;
-  }
-  .aurora .a1{width:38vw;height:38vw; background:#2dd4bf; top:-10%; left:-8%;}
-  .aurora .a2{width:42vw;height:42vw; background:#7c3aed; top:30%; right:-12%; animation-delay:-7s;}
-  .aurora .a3{width:34vw;height:34vw; background:#f43f5e; bottom:-12%; left:18%; animation-delay:-14s;}
-  @keyframes drift{
-    0%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(4%,6%) scale(1.12);}
-    100%{transform:translate(-3%,-4%) scale(0.95);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .aurora span{animation:none;}
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .wrap{max-width:1280px; margin:0 auto; padding:32px 20px 60px;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* Header */
-  header{text-align:center; padding:40px 0 28px;}
-  .brand-icon{
-    display:inline-flex; align-items:center; justify-content:center;
-    width:64px; height:64px; border-radius:18px;
-    background:linear-gradient(135deg, rgba(94,234,212,0.18), rgba(167,139,250,0.18));
-    border:1px solid var(--card-border);
-    font-size:26px; color:var(--cyan);
-    margin-bottom:18px;
-    box-shadow:0 8px 30px rgba(94,234,212,0.08);
-  }
-  h1{
-    font-size:clamp(2.4rem, 6vw, 4rem);
-    font-weight:800; letter-spacing:-0.03em; line-height:1.05;
-    background:linear-gradient(120deg, #5eead4 0%, #a78bfa 55%, #fb7185 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  header p{
-    margin-top:14px; color:var(--muted); font-size:clamp(0.95rem,2vw,1.15rem);
-    max-width:560px; margin-inline:auto; line-height:1.6;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-  /* Search */
-  .search-box{
-    max-width:560px; margin:32px auto 8px; position:relative;
-  }
-  .search-box i{
-    position:absolute; left:20px; top:50%; transform:translateY(-50%);
-    color:var(--muted); font-size:15px;
-  }
-  .search-box input{
-    width:100%; padding:16px 20px 16px 50px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid var(--card-border);
-    border-radius:999px; color:var(--text); font-size:15px;
-    outline:none; transition:.25s;
-    font-family:'Inter',sans-serif;
-  }
-  .search-box input::placeholder{color:var(--muted);}
-  .search-box input:focus{
-    border-color:var(--cyan);
-    box-shadow:0 0 0 4px rgba(94,234,212,0.12);
-    background:rgba(255,255,255,0.05);
-  }
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
 
-  /* Section heading */
-  .section-head{
-    display:flex; align-items:center; gap:14px; margin:46px 0 22px;
-  }
-  .section-head h2{
-    font-size:1.5rem; font-weight:700; letter-spacing:-0.01em; white-space:nowrap;
-  }
-  .section-head .line{
-    flex:1; height:1px; background:linear-gradient(90deg, var(--card-border), transparent);
-  }
+    /* Aurora background */
+    .aurora {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background: radial-gradient(ellipse at top, #131a3d 0%, var(--bg) 60%);
+    }
 
-  /* Grid */
-  .grid{
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
-    gap:22px;
-  }
+    .aurora span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: .35;
+      animation: drift 22s ease-in-out infinite alternate;
+    }
 
-  /* Category card */
-  .category-card{
-    background:var(--card);
-    border:1px solid var(--card-border);
-    border-radius:24px; padding:26px;
-    backdrop-filter:blur(14px);
-    transition:transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s, box-shadow .35s;
-  }
-  .category-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 50px -20px rgba(0,0,0,0.5);
-  }
-  .cat-head{
-    display:flex; align-items:center; gap:14px;
-    padding-bottom:18px; margin-bottom:18px;
-    border-bottom:1px solid rgba(255,255,255,0.06);
-  }
-  .cat-icon{
-    width:46px; height:46px; border-radius:14px;
-    display:flex; align-items:center; justify-content:center;
-    font-size:19px; flex-shrink:0;
-    border:1px solid var(--card-border);
-  }
-  .cat-head h3{font-size:1.2rem; font-weight:700; letter-spacing:-0.01em;}
+    .aurora .a1 {
+      width: 38vw;
+      height: 38vw;
+      background: #2dd4bf;
+      top: -10%;
+      left: -8%;
+    }
 
-  /* link item */
-  .list-container{display:flex; flex-direction:column; gap:10px;}
-  .link-item{
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    padding:13px 14px; border-radius:14px;
-    background:rgba(255,255,255,0.02);
-    border:1px solid transparent;
-    text-decoration:none; color:inherit;
-    transition:.22s;
-  }
-  .link-item:hover{
-    background:rgba(255,255,255,0.06);
-    border-color:rgba(255,255,255,0.1);
-    transform:translateX(4px);
-  }
-  .link-left{display:flex; align-items:center; gap:13px; min-width:0;}
-  .link-icon{
-    width:38px; height:38px; border-radius:10px; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; font-size:16px;
-    background:rgba(255,255,255,0.04);
-  }
-  .link-text h4{font-size:0.95rem; font-weight:600; color:var(--text); line-height:1.3;}
-  .link-text p{font-size:0.78rem; color:var(--muted); margin-top:1px;
-    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .link-item .go{color:var(--muted); font-size:11px; transition:.22s; flex-shrink:0;}
-  .link-item:hover .go{color:var(--cyan); transform:translateX(2px);}
+    .aurora .a2 {
+      width: 42vw;
+      height: 42vw;
+      background: #7c3aed;
+      top: 30%;
+      right: -12%;
+      animation-delay: -7s;
+    }
 
-  /* color accents per category */
-  .accent-cyan .cat-icon{color:var(--cyan); background:rgba(94,234,212,0.1); border-color:rgba(94,234,212,0.2);}
-  .accent-violet .cat-icon{color:var(--violet); background:rgba(167,139,250,0.1); border-color:rgba(167,139,250,0.2);}
-  .accent-pink .cat-icon{color:var(--pink); background:rgba(251,113,133,0.1); border-color:rgba(251,113,133,0.2);}
-  .accent-amber .cat-icon{color:var(--amber); background:rgba(251,191,36,0.1); border-color:rgba(251,191,36,0.2);}
+    .aurora .a3 {
+      width: 34vw;
+      height: 34vw;
+      background: #f43f5e;
+      bottom: -12%;
+      left: 18%;
+      animation-delay: -14s;
+    }
 
-  footer{
-    text-align:center; margin-top:60px; color:var(--muted); font-size:0.85rem;
-  }
+    @keyframes drift {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
 
-  /* No results state */
-  #noResults{
-    display:none; text-align:center; padding:60px 20px; color:var(--muted);
-  }
-  #noResults i{font-size:2rem; margin-bottom:14px; color:var(--violet); display:block;}
+      50% {
+        transform: translate(4%, 6%) scale(1.12);
+      }
 
-  @media (max-width:600px){
-    .wrap{padding:20px 14px 40px;}
-    header{padding:24px 0 20px;}
-    .category-card{padding:20px;}
-  }
-</style>
+      100% {
+        transform: translate(-3%, -4%) scale(0.95);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .aurora span {
+        animation: none;
+      }
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 0 28px;
+    }
+
+    .brand-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(167, 139, 250, 0.18));
+      border: 1px solid var(--card-border);
+      font-size: 26px;
+      color: var(--cyan);
+      margin-bottom: 18px;
+      box-shadow: 0 8px 30px rgba(94, 234, 212, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      background: linear-gradient(120deg, #5eead4 0%, #a78bfa 55%, #fb7185 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    header p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      max-width: 560px;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+
+    /* Search */
+    .search-box {
+      max-width: 560px;
+      margin: 32px auto 8px;
+      position: relative;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+      transition: .25s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .search-box input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-box input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Section heading */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 46px 0 22px;
+    }
+
+    .section-head h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .section-head .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--card-border), transparent);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    /* Category card */
+    .category-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 26px;
+      backdrop-filter: blur(14px);
+      transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .35s, box-shadow .35s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.5);
+    }
+
+    .cat-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cat-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      flex-shrink: 0;
+      border: 1px solid var(--card-border);
+    }
+
+    .cat-head h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* link item */
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: inherit;
+      transition: .22s;
+    }
+
+    .link-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .link-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .link-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .link-text p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .link-item .go {
+      color: var(--muted);
+      font-size: 11px;
+      transition: .22s;
+      flex-shrink: 0;
+    }
+
+    .link-item:hover .go {
+      color: var(--cyan);
+      transform: translateX(2px);
+    }
+
+    /* color accents per category */
+    .accent-cyan .cat-icon {
+      color: var(--cyan);
+      background: rgba(94, 234, 212, 0.1);
+      border-color: rgba(94, 234, 212, 0.2);
+    }
+
+    .accent-violet .cat-icon {
+      color: var(--violet);
+      background: rgba(167, 139, 250, 0.1);
+      border-color: rgba(167, 139, 250, 0.2);
+    }
+
+    .accent-pink .cat-icon {
+      color: var(--pink);
+      background: rgba(251, 113, 133, 0.1);
+      border-color: rgba(251, 113, 133, 0.2);
+    }
+
+    .accent-amber .cat-icon {
+      color: var(--amber);
+      background: rgba(251, 191, 36, 0.1);
+      border-color: rgba(251, 191, 36, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* No results state */
+    #noResults {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+
+    #noResults i {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      color: var(--violet);
+      display: block;
+    }
+
+    @media (max-width:600px) {
+      .wrap {
+        padding: 20px 14px 40px;
+      }
+
+      header {
+        padding: 24px 0 20px;
+      }
+
+      .category-card {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="aurora">
-  <span class="a1"></span>
-  <span class="a2"></span>
-  <span class="a3"></span>
-</div>
-
-<div class="wrap">
-
-  <header>
-    <div class="brand-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-    <h1>Digital Cosmos</h1>
-    <p>Aapke sabhi zaroori aur kaam ke links — ek hi jagah, ek streamlined dashboard mein.</p>
-
-    <div class="search-box">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" id="searchInput" placeholder="Link, category ya naam search karein..." onkeyup="searchLinks()">
-    </div>
-  </header>
-
-  <!-- Section 1 -->
-  <div class="section-head">
-    <h2>Main Universe</h2>
-    <div class="line"></div>
+  <div class="aurora">
+    <span class="a1"></span>
+    <span class="a2"></span>
+    <span class="a3"></span>
   </div>
 
-  <div class="grid" id="gridMain">
+  <div class="wrap">
 
-    <!-- Entertainment -->
-    <div class="category-card accent-cyan">
-      <div class="cat-head">
-        <span class="cat-icon"><i class="fa-solid fa-play"></i></span>
-        <h3>Entertainment</h3>
+    <header>
+      <div class="brand-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+      <h1>Digital Cosmos</h1>
+      <p>Your essential and useful links — all in one place, in a single streamlined dashboard.</p>
+
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Link, category ya naam search karein..."
+          onkeyup="searchLinks()">
       </div>
-      <div class="list-container">
-        <a href="https://www.youtube.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#ff4d4d;"><i class="fa-brands fa-youtube"></i></span>
-            <div class="link-text"><h4>YouTube</h4><p>Stream videos &amp; music</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://www.netflix.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#e50914;"><i class="fa-solid fa-film"></i></span>
-            <div class="link-text"><h4>Netflix</h4><p>Premium movies &amp; shows</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://open.spotify.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#1db954;"><i class="fa-brands fa-spotify"></i></span>
-            <div class="link-text"><h4>Spotify</h4><p>Music &amp; podcasts</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-      </div>
+    </header>
+
+    <!-- Section 1 -->
+    <div class="section-head">
+      <h2>Main Universe</h2>
+      <div class="line"></div>
     </div>
 
-    <!-- Social -->
-    <div class="category-card accent-violet">
-      <div class="cat-head">
-        <span class="cat-icon"><i class="fa-solid fa-comments"></i></span>
-        <h3>Social Hub</h3>
+    <div class="grid" id="gridMain">
+
+      <!-- Entertainment -->
+      <div class="category-card accent-cyan">
+        <div class="cat-head">
+          <span class="cat-icon"><i class="fa-solid fa-play"></i></span>
+          <h3>Entertainment</h3>
+        </div>
+        <div class="list-container">
+          <a href="https://www.youtube.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#ff4d4d;"><i class="fa-brands fa-youtube"></i></span>
+              <div class="link-text">
+                <h4>YouTube</h4>
+                <p>Stream videos &amp; music</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://www.netflix.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#e50914;"><i class="fa-solid fa-film"></i></span>
+              <div class="link-text">
+                <h4>Netflix</h4>
+                <p>Premium movies &amp; shows</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://open.spotify.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#1db954;"><i class="fa-brands fa-spotify"></i></span>
+              <div class="link-text">
+                <h4>Spotify</h4>
+                <p>Music &amp; podcasts</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+        </div>
       </div>
-      <div class="list-container">
-        <a href="https://www.instagram.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#f472b6;"><i class="fa-brands fa-instagram"></i></span>
-            <div class="link-text"><h4>Instagram</h4><p>Photos &amp; reels</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://web.whatsapp.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#25d366;"><i class="fa-brands fa-whatsapp"></i></span>
-            <div class="link-text"><h4>WhatsApp</h4><p>Browser chat</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://x.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#e7e9f5;"><i class="fa-brands fa-x-twitter"></i></span>
-            <div class="link-text"><h4>X (Twitter)</h4><p>Latest updates</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
+
+      <!-- Social -->
+      <div class="category-card accent-violet">
+        <div class="cat-head">
+          <span class="cat-icon"><i class="fa-solid fa-comments"></i></span>
+          <h3>Social Hub</h3>
+        </div>
+        <div class="list-container">
+          <a href="https://www.instagram.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#f472b6;"><i class="fa-brands fa-instagram"></i></span>
+              <div class="link-text">
+                <h4>Instagram</h4>
+                <p>Photos &amp; reels</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://web.whatsapp.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#25d366;"><i class="fa-brands fa-whatsapp"></i></span>
+              <div class="link-text">
+                <h4>WhatsApp</h4>
+                <p>Browser chat</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://x.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#e7e9f5;"><i class="fa-brands fa-x-twitter"></i></span>
+              <div class="link-text">
+                <h4>X (Twitter)</h4>
+                <p>Latest updates</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+        </div>
       </div>
+
+      <!-- Shopping -->
+      <div class="category-card accent-pink">
+        <div class="cat-head">
+          <span class="cat-icon"><i class="fa-solid fa-cart-shopping"></i></span>
+          <h3>Shopping</h3>
+        </div>
+        <div class="list-container">
+          <a href="https://www.amazon.in" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#fbbf24;"><i class="fa-brands fa-amazon"></i></span>
+              <div class="link-text">
+                <h4>Amazon</h4>
+                <p>Online shopping</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://www.flipkart.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#5eead4;"><i class="fa-solid fa-bag-shopping"></i></span>
+              <div class="link-text">
+                <h4>Flipkart</h4>
+                <p>Deals &amp; offers</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Shopping -->
-    <div class="category-card accent-pink">
-      <div class="cat-head">
-        <span class="cat-icon"><i class="fa-solid fa-cart-shopping"></i></span>
-        <h3>Shopping</h3>
-      </div>
-      <div class="list-container">
-        <a href="https://www.amazon.in" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#fbbf24;"><i class="fa-brands fa-amazon"></i></span>
-            <div class="link-text"><h4>Amazon</h4><p>Online shopping</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://www.flipkart.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#5eead4;"><i class="fa-solid fa-bag-shopping"></i></span>
-            <div class="link-text"><h4>Flipkart</h4><p>Deals &amp; offers</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-      </div>
+    <!-- Section 2 -->
+    <div class="section-head">
+      <h2>Work, AI &amp; Tools</h2>
+      <div class="line"></div>
     </div>
 
+    <div class="grid" id="gridTools">
+
+      <!-- Work -->
+      <div class="category-card accent-cyan">
+        <div class="cat-head">
+          <span class="cat-icon"><i class="fa-solid fa-briefcase"></i></span>
+          <h3>Work Tools</h3>
+        </div>
+        <div class="list-container">
+          <a href="https://gmail.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#f87171;"><i class="fa-solid fa-envelope"></i></span>
+              <div class="link-text">
+                <h4>Gmail</h4>
+                <p>Official emails</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#60a5fa;"><i class="fa-brands fa-linkedin"></i></span>
+              <div class="link-text">
+                <h4>LinkedIn</h4>
+                <p>Professional network</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://drive.google.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#34d399;"><i class="fa-brands fa-google-drive"></i></span>
+              <div class="link-text">
+                <h4>Google Drive</h4>
+                <p>Files &amp; storage</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- AI -->
+      <div class="category-card accent-violet">
+        <div class="cat-head">
+          <span class="cat-icon"><i class="fa-solid fa-robot"></i></span>
+          <h3>AI Assistants</h3>
+        </div>
+        <div class="list-container">
+          <a href="https://claude.ai" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#fbbf24;"><i class="fa-solid fa-sparkles"></i></span>
+              <div class="link-text">
+                <h4>Claude</h4>
+                <p>AI assistant</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://chatgpt.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#34d399;"><i class="fa-solid fa-brain"></i></span>
+              <div class="link-text">
+                <h4>ChatGPT</h4>
+                <p>AI chat</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://www.wikipedia.org" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#a78bfa;"><i class="fa-solid fa-book"></i></span>
+              <div class="link-text">
+                <h4>Wikipedia</h4>
+                <p>Knowledge hub</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Utilities -->
+      <div class="category-card accent-amber">
+        <div class="cat-head">
+          <span class="cat-icon"><i class="fa-solid fa-toolbox"></i></span>
+          <h3>Utilities</h3>
+        </div>
+        <div class="list-container">
+          <a href="https://translate.google.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#5eead4;"><i class="fa-solid fa-language"></i></span>
+              <div class="link-text">
+                <h4>Google Translate</h4>
+                <p>Language translation</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+          <a href="https://maps.google.com" target="_blank" class="link-item">
+            <div class="link-left">
+              <span class="link-icon" style="color:#fb7185;"><i class="fa-solid fa-map-location-dot"></i></span>
+              <div class="link-text">
+                <h4>Google Maps</h4>
+                <p>Navigation</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square go"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="noResults">
+      <i class="fa-solid fa-satellite"></i>
+      Koi link nahi mila. Kuch alag search karke dekhein.
+    </div>
+
+    <footer>Made with ✦ — Digital Cosmos Dashboard</footer>
   </div>
 
-  <!-- Section 2 -->
-  <div class="section-head">
-    <h2>Work, AI &amp; Tools</h2>
-    <div class="line"></div>
-  </div>
+  <script>
+    function searchLinks() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.category-card');
+      let anyVisible = false;
 
-  <div class="grid" id="gridTools">
+      cards.forEach(card => {
+        const items = card.querySelectorAll('.link-item');
+        let cardHasVisible = false;
+        items.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          const match = text.includes(input);
+          item.style.display = match ? '' : 'none';
+          if (match) cardHasVisible = true;
+        });
+        card.style.display = cardHasVisible ? '' : 'none';
+        if (cardHasVisible) anyVisible = true;
+      });
 
-    <!-- Work -->
-    <div class="category-card accent-cyan">
-      <div class="cat-head">
-        <span class="cat-icon"><i class="fa-solid fa-briefcase"></i></span>
-        <h3>Work Tools</h3>
-      </div>
-      <div class="list-container">
-        <a href="https://gmail.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#f87171;"><i class="fa-solid fa-envelope"></i></span>
-            <div class="link-text"><h4>Gmail</h4><p>Official emails</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#60a5fa;"><i class="fa-brands fa-linkedin"></i></span>
-            <div class="link-text"><h4>LinkedIn</h4><p>Professional network</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://drive.google.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#34d399;"><i class="fa-brands fa-google-drive"></i></span>
-            <div class="link-text"><h4>Google Drive</h4><p>Files &amp; storage</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- AI -->
-    <div class="category-card accent-violet">
-      <div class="cat-head">
-        <span class="cat-icon"><i class="fa-solid fa-robot"></i></span>
-        <h3>AI Assistants</h3>
-      </div>
-      <div class="list-container">
-        <a href="https://claude.ai" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#fbbf24;"><i class="fa-solid fa-sparkles"></i></span>
-            <div class="link-text"><h4>Claude</h4><p>AI assistant</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://chatgpt.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#34d399;"><i class="fa-solid fa-brain"></i></span>
-            <div class="link-text"><h4>ChatGPT</h4><p>AI chat</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://www.wikipedia.org" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#a78bfa;"><i class="fa-solid fa-book"></i></span>
-            <div class="link-text"><h4>Wikipedia</h4><p>Knowledge hub</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Utilities -->
-    <div class="category-card accent-amber">
-      <div class="cat-head">
-        <span class="cat-icon"><i class="fa-solid fa-toolbox"></i></span>
-        <h3>Utilities</h3>
-      </div>
-      <div class="list-container">
-        <a href="https://translate.google.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#5eead4;"><i class="fa-solid fa-language"></i></span>
-            <div class="link-text"><h4>Google Translate</h4><p>Language translation</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-        <a href="https://maps.google.com" target="_blank" class="link-item">
-          <div class="link-left">
-            <span class="link-icon" style="color:#fb7185;"><i class="fa-solid fa-map-location-dot"></i></span>
-            <div class="link-text"><h4>Google Maps</h4><p>Navigation</p></div>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square go"></i>
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <div id="noResults">
-    <i class="fa-solid fa-satellite"></i>
-    Koi link nahi mila. Kuch alag search karke dekhein.
-  </div>
-
-  <footer>Made with ✦ — Digital Cosmos Dashboard</footer>
-</div>
-
-<script>
-function searchLinks() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  const cards = document.querySelectorAll('.category-card');
-  let anyVisible = false;
-
-  cards.forEach(card => {
-    const items = card.querySelectorAll('.link-item');
-    let cardHasVisible = false;
-    items.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      const match = text.includes(input);
-      item.style.display = match ? '' : 'none';
-      if (match) cardHasVisible = true;
-    });
-    card.style.display = cardHasVisible ? '' : 'none';
-    if (cardHasVisible) anyVisible = true;
-  });
-
-  document.getElementById('noResults').style.display = anyVisible ? 'none' : 'block';
-}
-</script>
+      document.getElementById('noResults').style.display = anyVisible ? 'none' : 'block';
+    }
+  </script>
 
 </body>
+
 </html>
